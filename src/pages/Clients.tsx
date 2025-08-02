@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -61,6 +62,7 @@ const mockClients = [
 ];
 
 export default function Clients() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
@@ -91,7 +93,7 @@ export default function Clients() {
             Manage your client relationships and contact information.
           </p>
         </div>
-        <Button variant="legal">
+        <Button variant="legal" onClick={() => navigate("/clients/add")}>
           <Plus className="w-4 h-4" />
           Add New Client
         </Button>
@@ -202,7 +204,7 @@ export default function Clients() {
             <p className="text-muted-foreground mb-4">
               {searchTerm ? "Try adjusting your search criteria." : "Start by adding your first client."}
             </p>
-            <Button variant="legal">
+            <Button variant="legal" onClick={() => navigate("/clients/add")}>
               <Plus className="w-4 h-4" />
               Add New Client
             </Button>
