@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Clients from "./pages/Clients";
 import AddClient from "./pages/AddClient";
 import Opportunities from "./pages/Opportunities";
+import AddOpportunity from "./pages/AddOpportunity";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
             <Route path="/clients" element={<Clients />} />
             <Route path="/clients/add" element={<AddClient />} />
             <Route path="/opportunities" element={<Opportunities />} />
+            <Route path="/opportunities/add" element={<AddOpportunity />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

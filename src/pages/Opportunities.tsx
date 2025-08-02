@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
-import { 
+import {
   Plus, 
   Search, 
   Filter, 
@@ -82,6 +83,7 @@ const mockOpportunities = [
 ];
 
 export default function Opportunities() {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
   const [statusFilter, setStatusFilter] = useState("all");
 
@@ -134,7 +136,7 @@ export default function Opportunities() {
             Track and manage your legal cases and business opportunities.
           </p>
         </div>
-        <Button variant="legal">
+        <Button variant="legal" onClick={() => navigate("/opportunities/add")}>
           <Plus className="w-4 h-4" />
           Create Opportunity
         </Button>
@@ -292,7 +294,7 @@ export default function Opportunities() {
             <p className="text-muted-foreground mb-4">
               {searchTerm ? "Try adjusting your search criteria." : "Start by creating your first opportunity."}
             </p>
-            <Button variant="legal">
+            <Button variant="legal" onClick={() => navigate("/opportunities/add")}>
               <Plus className="w-4 h-4" />
               Create Opportunity
             </Button>
