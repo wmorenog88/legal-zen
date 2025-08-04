@@ -151,10 +151,10 @@ export default function Clients() {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent>
-                      <DropdownMenuItem>
-                        <Eye className="w-4 h-4" />
-                        View Details
-                      </DropdownMenuItem>
+                       <DropdownMenuItem onClick={() => navigate(`/clients/${client.id}`)}>
+                         <Eye className="w-4 h-4" />
+                         View Details
+                       </DropdownMenuItem>
                       <DropdownMenuItem>
                         <Edit className="w-4 h-4" />
                         Edit Client
@@ -187,7 +187,11 @@ export default function Clients() {
                 <span className="text-xs text-muted-foreground">
                   Added {client.created_at}
                 </span>
-                <Button variant="outline" size="sm">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => navigate(`/clients/${client.id}`)}
+                >
                   View Profile
                 </Button>
               </div>

@@ -10,6 +10,7 @@ import AddClient from "./pages/AddClient";
 import Opportunities from "./pages/Opportunities";
 import AddOpportunity from "./pages/AddOpportunity";
 import OpportunityDetail from "./pages/OpportunityDetail";
+import ClientDetail from "./pages/ClientDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
             <Route path="/" element={<Dashboard />} />
             <Route path="/clients" element={<Clients />} />
             <Route path="/clients/add" element={<AddClient />} />
+            <Route path="/clients/:id" element={<ClientDetail />} />
             <Route path="/opportunities" element={<Opportunities />} />
             <Route path="/opportunities/add" element={<AddOpportunity />} />
             <Route path="/opportunities/:id" element={<OpportunityDetail />} />
