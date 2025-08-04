@@ -9,6 +9,7 @@ import Clients from "./pages/Clients";
 import AddClient from "./pages/AddClient";
 import Opportunities from "./pages/Opportunities";
 import AddOpportunity from "./pages/AddOpportunity";
+import OpportunityDetail from "./pages/OpportunityDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/clients/add" element={<AddClient />} />
             <Route path="/opportunities" element={<Opportunities />} />
             <Route path="/opportunities/add" element={<AddOpportunity />} />
+            <Route path="/opportunities/:id" element={<OpportunityDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

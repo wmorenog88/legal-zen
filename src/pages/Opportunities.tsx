@@ -250,7 +250,11 @@ export default function Opportunities() {
                         {formatCurrency(opportunity.value)}
                       </div>
                       <div className="flex gap-2">
-                        <Button variant="outline" size="sm">
+                        <Button 
+                          variant="outline" 
+                          size="sm"
+                          onClick={() => navigate(`/opportunities/${opportunity.id}`)}
+                        >
                           <Eye className="w-4 h-4" />
                           View
                         </Button>
