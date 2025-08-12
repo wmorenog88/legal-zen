@@ -6,6 +6,7 @@ import {
   Settings,
   FileText,
   TrendingUp,
+  FolderOpen,
 } from "lucide-react";
 import {
   Sidebar,
@@ -23,6 +24,7 @@ const navigationItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Clients", url: "/clients", icon: Users },
   { title: "Opportunities", url: "/opportunities", icon: Briefcase },
+  { title: "Asuntos", url: "/asuntos", icon: FolderOpen },
   { title: "Documents", url: "/documents", icon: FileText },
   { title: "Reports", url: "/reports", icon: TrendingUp },
   { title: "Settings", url: "/settings", icon: Settings },

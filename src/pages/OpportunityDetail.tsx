@@ -91,10 +91,26 @@ export default function OpportunityDetail() {
       const updatedOpportunity = { ...opportunity, status: newStatus };
       setOpportunity(updatedOpportunity);
       
-      toast({
-        title: "Status Updated",
-        description: `Opportunity status changed to ${newStatus}`,
-      });
+      // If status is "won", create an asunto
+      if (newStatus === "won") {
+        toast({
+          title: "¡Oportunidad Ganada!",
+          description: "Se ha creado un nuevo asunto para gestionar este proyecto",
+        });
+        // In a real app, this would create the asunto in the database
+        // For now, we just show a success message
+        setTimeout(() => {
+          toast({
+            title: "Asunto Creado",
+            description: "Puedes encontrar el nuevo asunto en la sección de Asuntos",
+          });
+        }, 2000);
+      } else {
+        toast({
+          title: "Status Updated",
+          description: `Opportunity status changed to ${newStatus}`,
+        });
+      }
     } catch (error) {
       toast({
         title: "Error",

@@ -11,6 +11,8 @@ import Opportunities from "./pages/Opportunities";
 import AddOpportunity from "./pages/AddOpportunity";
 import OpportunityDetail from "./pages/OpportunityDetail";
 import ClientDetail from "./pages/ClientDetail";
+import Asuntos from "./pages/Asuntos";
+import AsuntoDetail from "./pages/AsuntoDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +32,8 @@ const App = () => (
             <Route path="/opportunities" element={<Opportunities />} />
             <Route path="/opportunities/add" element={<AddOpportunity />} />
             <Route path="/opportunities/:id" element={<OpportunityDetail />} />
+            <Route path="/asuntos" element={<Asuntos />} />
+            <Route path="/asuntos/:id" element={<AsuntoDetail />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
