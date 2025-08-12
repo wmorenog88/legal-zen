@@ -10,8 +10,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowLeft, DollarSign } from "lucide-react";
+import { ArrowLeft, DollarSign, Target } from "lucide-react";
 import { toast } from "sonner";
+import GoalCreationModal, { Goal } from "@/components/GoalCreationModal";
+import GoalsList from "@/components/GoalsList";
 
 const opportunitySchema = z.object({
   title: z.string().min(1, "Title is required"),
@@ -37,6 +39,37 @@ export default function AddOpportunity() {
   const [isLoading, setIsLoading] = useState(false);
   const [clients, setClients] = useState<Client[]>([]);
   const [loadingClients, setLoadingClients] = useState(true);
+  const [goals, setGoals] = useState<Goal[]>([
+    // Mock data for goals
+    {
+      id: "1",
+      name: "Initial Client Meeting",
+      description: "Schedule and conduct the first meeting with the client to understand their needs and requirements",
+      valueEstimation: "5000",
+      timeEstimation: "1 week"
+    },
+    {
+      id: "2",
+      name: "Legal Research & Analysis",
+      description: "Conduct comprehensive legal research on the case specifics and precedents",
+      valueEstimation: "15000",
+      timeEstimation: "3 weeks"
+    },
+    {
+      id: "3",
+      name: "Document Preparation",
+      description: "Prepare all necessary legal documents and contracts",
+      valueEstimation: "8000",
+      timeEstimation: "2 weeks"
+    },
+    {
+      id: "4",
+      name: "Final Negotiation & Closing",
+      description: "Handle final negotiations and close the deal with all parties",
+      valueEstimation: "12000",
+      timeEstimation: "1 week"
+    }
+  ]);
 
   const form = useForm<OpportunityFormData>({
     resolver: zodResolver(opportunitySchema),
@@ -113,6 +146,20 @@ export default function AddOpportunity() {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const handleAddGoal = (goalData: Omit<Goal, "id">) => {
+    const newGoal: Goal = {
+      ...goalData,
+      id: Date.now().toString(),
+    };
+    setGoals([...goals, newGoal]);
+    toast.success("Goal added successfully");
+  };
+
+  const handleRemoveGoal = (goalId: string) => {
+    setGoals(goals.filter(goal => goal.id !== goalId));
+    toast.success("Goal removed");
   };
 
   return (
@@ -327,6 +374,25 @@ export default function AddOpportunity() {
               </div>
             </form>
           </Form>
+        </CardContent>
+      </Card>
+
+      {/* Goals Section */}
+      <Card className="max-w-2xl mt-6">
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Target className="h-5 w-5 text-primary" />
+              <CardTitle>Opportunity Goals</CardTitle>
+            </div>
+            <GoalCreationModal onAddGoal={handleAddGoal} />
+          </div>
+          <p className="text-muted-foreground text-sm">
+            Define specific goals and milestones for this opportunity
+          </p>
+        </CardHeader>
+        <CardContent>
+          <GoalsList goals={goals} onRemoveGoal={handleRemoveGoal} />
         </CardContent>
       </Card>
     </div>
